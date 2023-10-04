@@ -54,7 +54,7 @@ namespace MicroSample.CustomerService.Controllers
 
             return CreatedAtAction("GetById", new { Id = customer.Id }, customer);
         }
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, CustomerEditDto customerEditDto)
         {
             if (customerEditDto == null ||
@@ -76,7 +76,7 @@ namespace MicroSample.CustomerService.Controllers
 
             return NoContent();
         }
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var customer = await _appDbContext.Customers.FirstOrDefaultAsync(f => f.Id == id);
